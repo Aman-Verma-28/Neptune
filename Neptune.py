@@ -8,6 +8,8 @@ import wikipedia
 import wolframalpha
 import pyaudio 
 import subprocess
+from security import safe_command
+
 engine=pyttsx3.init("sapi5")
 voices=engine.getProperty("voices")
 # print(voices[1].id)
@@ -73,7 +75,7 @@ if __name__ == "__main__":
             webbrowser.open("www.gmail.com")
         elif "open music" in query:
             speak("okay  . Opening")
-            subprocess.call("C:\\Users\\verma\\AppData\\Roaming\\Microsoft\\Windows\\\Start Menu\\Programs\\Spotify.exe")
+            safe_command.run(subprocess.call, "C:\\Users\\verma\\AppData\\Roaming\\Microsoft\\Windows\\\Start Menu\\Programs\\Spotify.exe")
         elif "open hacker" in query:
             speak("okay  . Opening")
             webbrowser.open("www.hackerrank.com")
@@ -87,7 +89,7 @@ if __name__ == "__main__":
             sys.exit()
         elif "open notepad" in query:
             speak("okay  . Opening")
-            subprocess.call("notepad.exe")
+            safe_command.run(subprocess.call, "notepad.exe")
         elif "open calculator" in query:
             speak("okay  . Opening")
-            subprocess.call("calculator.exe")
+            safe_command.run(subprocess.call, "calculator.exe")
